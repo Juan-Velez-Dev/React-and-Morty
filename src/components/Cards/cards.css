@@ -1,0 +1,9 @@
+.cards {
+  width: 85%;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-grow: inherit;
+  flex-wrap: wrap;
+}

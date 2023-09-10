@@ -1,0 +1,108 @@
+.card {
+  position: relative;
+  display: flex;
+  margin: 20px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 240px;
+  height: 280px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.card div {
+  position: absolute;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform 0.5s;
+  color: #fcfafb;
+  background-color: #461959;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card-front {
+  transform: perspective(500px) rotateY(0deg);
+  z-index: 1;
+}
+
+.card-back {
+  padding-top: 30px;
+  background-color: #461959;
+  transform: perspective(500px) rotateY(-180deg);
+  z-index: 2;
+}
+
+.card:hover .card-front {
+  transform: perspective(500px) rotateY(-180deg);
+}
+
+.card:hover .card-back {
+  transform: perspective(500px) rotateY(-360deg);
+}
+
+.card-img {
+  width: 200px;
+  margin: 10px;
+  border-radius: 40px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card-btn-delete {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.card-link {
+  color: rgb(60, 204, 60);
+}
+
+.card-link-text:hover {
+  cursor: pointer;
+  scale: 1.05;
+}
+
+.card-link-tetxt:active {
+  scale: 0.95;
+}
+
+.card-link-text {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 180px;
+  }
+
+  .card-img {
+    width: 150px;
+  }
+
+  .card-btn-delete {
+    font-size: 1rem;
+  }
+
+  .card-link-text {
+    font-size: 1rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-status {
+    font-size: 1rem;
+  }
+}

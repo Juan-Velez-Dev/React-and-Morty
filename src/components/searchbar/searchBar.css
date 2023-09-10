@@ -1,0 +1,29 @@
+.search {
+  display: flex;
+  gap: 10px;
+}
+
+.search-btn {
+  font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 950px) {
+  .search-btn {
+    font-size: 1rem;
+  }
+  .search-input {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+}
+
+@media only screen and (max-width: 720px) {
+  .search-btn {
+    font-size: 0.8rem;
+  }
+  .search-input {
+    font-size: 0.8rem;
+  }
+}
