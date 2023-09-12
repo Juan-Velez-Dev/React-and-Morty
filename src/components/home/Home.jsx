@@ -1,5 +1,5 @@
 import React from "react";
-import Cards from "../Cards/Cards";
+import Cards from "../cards/cards";
 export default function Home({ characters, onClose }) {
   return (
     <div>

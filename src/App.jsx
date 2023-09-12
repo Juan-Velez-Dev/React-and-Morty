@@ -5,6 +5,7 @@ import Error from "./components/error/Error";
 import About from "./components/about/About";
 import Nav from "./components/nav/Nav";
 import Detail from "./components/detail/Detail";
+import Favorites from "./components/favorites/Favorites";
 import "./App.css";
 
 //* HOOKS
@@ -28,7 +29,7 @@ function App() {
 
   //* FUNCTIONS
   useEffect(() => {
-    !access && navigate("/");
+    !access && navigate("/home"); //! debmos cambiar el path a "/" para que nuestro login funcione
   }, [access]);
 
   // la funcion login recibe los datos del input y valida si es igual al de la base de datos
@@ -95,6 +96,7 @@ function App() {
         />
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
