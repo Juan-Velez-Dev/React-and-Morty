@@ -18,17 +18,17 @@ export function Card({
   onClose,
   removeFav,
   addFav,
-  myFavorites,
+  allCharacters,
 }) {
   const [isFav, setIsFav] = React.useState(false);
 
   useEffect(() => {
-    myFavorites.forEach((fav) => {
+    allCharacters.forEach((fav) => {
       if (fav.id === id) {
         setIsFav(true);
       }
     });
-  }, [myFavorites]);
+  }, [allCharacters]);
 
   const handleFavorite = () => {
     if (isFav) {
@@ -37,10 +37,13 @@ export function Card({
     } else {
       const character = {
         id,
+        name,
         status,
         species,
         image,
         onClose,
+        gender,
+        removeFav,
       };
       setIsFav(true);
       addFav(character);
@@ -69,6 +72,7 @@ export function Card({
         <h3 className="card-title">{name}</h3>
         <p className="card-status">{status}</p>
         <p>{species}</p>
+        {/* <p>{gender}</p> */}
       </div>
     </div>
   );
@@ -76,7 +80,7 @@ export function Card({
 
 const mapStateToProps = (state) => {
   return {
-    myFavorites: state.myFavorites,
+    allCharacters: state.myFavorites,
   };
 };
 

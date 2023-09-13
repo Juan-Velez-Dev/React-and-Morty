@@ -18,11 +18,13 @@ export default function Nav({ logOut, onSearch, randomChar }) {
         <NavLink className="nav-link" to="/home">
           <button className="nav-home">Home</button>
         </NavLink>
+
         {location.pathname !== "/about" && (
           <NavLink className="nav-link" to="/about">
             <button className="nav-about">About</button>
           </NavLink>
         )}
+
         <NavLink to="/favorites">
           <button>Favorites</button>
         </NavLink>

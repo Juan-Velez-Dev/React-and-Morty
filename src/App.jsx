@@ -16,27 +16,32 @@ import { useLocation, useNavigate, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
-  //* STATES
+  //* LOCAL STATES
   const [access, setAccess] = useState(false); // acceso a la pagina
   const [characters, setCharacters] = useState([]); // los caracteres que se van añadiendo
 
   // simulando base de datos
   const EMAIL = "develop@gmail.com";
   const PASSWORD = "Dev12345";
-  //* HOOKS
+
+  //* HOOKS INVOCATION
   const navigate = useNavigate();
   const location = useLocation();
 
-  //* FUNCTIONS
+  //* USEEFFECTS
   useEffect(() => {
-    !access && navigate("/home"); //! debmos cambiar el path a "/" para que nuestro login funcione
+    !access && navigate("/"); //! debmos cambiar el path a "/" para que nuestro login funcione
   }, [access]);
+
+  //* FUNCTIONS
 
   // la funcion login recibe los datos del input y valida si es igual al de la base de datos
   const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
       setAccess(true);
       navigate("/home");
+    } else {
+      window.alert("Incorrect data!");
     }
   };
 
@@ -45,6 +50,7 @@ function App() {
     setAccess(false);
   };
 
+  // la funcion
   const onSearch = (id) => {
     axios(`https://rickandmortyapi.com/api/character/${id}`)
       .then(({ data }) => {
