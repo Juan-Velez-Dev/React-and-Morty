@@ -17,7 +17,10 @@ import "./App.css";
 
 function App() {
   //* LOCAL STATES
-  const [access, setAccess] = useState(false); // acceso a la pagina
+  const [access, setAccess] = useState(
+    localStorage.getItem("access") === "true"
+  );
+
   const [characters, setCharacters] = useState([]); // los caracteres que se van añadiendo
 
   // simulando base de datos
@@ -35,19 +38,20 @@ function App() {
 
   //* FUNCTIONS
 
-  // la funcion login recibe los datos del input y valida si es igual al de la base de datos
   const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
       setAccess(true);
+      localStorage.setItem("access", "true"); // Guardar estado en localStorage
       navigate("/home");
     } else {
-      window.alert("Incorrect data!");
+      window.alert("Datos incorrectos.");
     }
   };
 
   // la funcion que cambia nuestro acceso a false si le damos al boton de logout
-  const logOut = (event) => {
+  const logOut = () => {
     setAccess(false);
+    localStorage.setItem("access", "false"); // Actualizar estado en localStorage
   };
 
   // la funcion
