@@ -25,8 +25,8 @@ export default function Nav({ logOut, onSearch, randomChar }) {
           </NavLink>
         )}
 
-        <NavLink to="/favorites">
-          <button>Favorites</button>
+        <NavLink className="nav-link" to="/favorites">
+          <button className="nav-fav">Favs</button>
         </NavLink>
         <NavLink className="nav-link" to="/">
           <button onClick={logOut} className="logout">

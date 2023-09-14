@@ -1,0 +1,14 @@
+.error-error-container {
+  margin: 50px auto;
+  width: 80%;
+  text-align: center;
+}
+.error-error-message p {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #fcfafb;
+  letter-spacing: 10px;
+}
+.error-error-message h1 {
+  font-size: 2.5rem;
+}

@@ -89,7 +89,7 @@ function App() {
 
   return (
     <div className="app-container">
-      {location.pathname !== "/" && (
+      {location.pathname !== "/" && location.pathname !== "*" && (
         <Nav
           logOut={logOut}
           characters={characters}

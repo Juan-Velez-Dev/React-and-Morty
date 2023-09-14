@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import React, { useEffect } from "react";
+import "./favorites.css";
 import Card from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { filterCards, orderCards } from "../../redux/actions";
@@ -22,18 +23,22 @@ export function Favorites({ onClose, myFavorites, allCharacters }) {
   };
 
   return (
-    <div>
-      <select name="order" onChange={handleOrder}>
-        <option value="A">Ascendant</option>
-        <option value="B">Descending</option>
-      </select>
-      <select name="filter" onChange={handleFilter}>
-        <option value="All">All</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Genderless">Genderless</option>
-        <option value="unknown">unknown</option>
-      </select>
+    <div className="fav-container">
+      <div className="select">
+        <select name="order" onChange={handleOrder}>
+          <option value="A">Ascendant</option>
+          <option value="B">Descending</option>
+        </select>
+
+        <select name="filter" onChange={handleFilter}>
+          <option value="All">All</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Genderless">Genderless</option>
+          <option value="unknown">unknown</option>
+        </select>
+      </div>
+
       <div className="cards">
         {myFavorites?.map((character, index) => {
           return (

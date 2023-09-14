@@ -59,9 +59,13 @@ export function Card({
 
       <div className="card-back">
         {isFav ? (
-          <button onClick={handleFavorite}>❤️</button>
+          <button className="card-btn-fav" onClick={handleFavorite}>
+            💚
+          </button>
         ) : (
-          <button onClick={handleFavorite}>🤍</button>
+          <button className="card-btn-fav" onClick={handleFavorite}>
+            🤍
+          </button>
         )}
         <button onClick={() => onClose(id)} className="card-btn-delete">
           ✘

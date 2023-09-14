@@ -22,6 +22,7 @@
 
 .nav-home,
 .nav-about,
+.nav-fav,
 .logout {
   align-items: flex-end;
   font-size: 1.3rem;
@@ -37,6 +38,7 @@
   }
   .nav-home,
   .nav-about,
+  .nav-fav,
   .logout {
     font-size: 1rem;
   }
@@ -53,6 +55,7 @@
 @media only screen and (max-width: 720px) {
   .nav-home,
   .nav-about,
+  .nav-fav,
   .logout {
     font-size: 0.8rem;
   }
