@@ -17,15 +17,13 @@ import "./App.css";
 
 function App() {
   //* LOCAL STATES
-  const [access, setAccess] = useState(
-    localStorage.getItem("access") === "true"
-  );
+  const [access, setAccess] = useState(false);
 
   const [characters, setCharacters] = useState([]); // los caracteres que se van añadiendo
 
   // simulando base de datos
-  const EMAIL = "develop@gmail.com";
-  const PASSWORD = "Dev12345";
+  // const EMAIL = "develop@gmail.com";
+  // const PASSWORD = "Dev12345";
 
   //* HOOKS INVOCATION
   const navigate = useNavigate();
@@ -33,25 +31,24 @@ function App() {
 
   //* USEEFFECTS
   useEffect(() => {
-    !access && navigate("/"); //! debmos cambiar el path a "/" para que nuestro login funcione
+    !access && navigate("/home"); //! debmos cambiar el path a "/" para que nuestro login funcione
   }, [access]);
 
   //* FUNCTIONS
 
   const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      localStorage.setItem("access", "true"); // Guardar estado en localStorage
-      navigate("/home");
-    } else {
-      window.alert("Datos incorrectos.");
-    }
+    const { email, password } = userData;
+    const URL = "http://localhost:3001/rickandmorty/login/";
+    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+      const { access } = data;
+      setAccess(data);
+      access && navigate("/home");
+    });
   };
 
   // la funcion que cambia nuestro acceso a false si le damos al boton de logout
   const logOut = () => {
     setAccess(false);
-    localStorage.setItem("access", "false"); // Actualizar estado en localStorage
   };
 
   // la funcion

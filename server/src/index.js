@@ -1,27 +1,26 @@
-// Importamos el módulo 'http' para crear un servidor HTTP.
-const http = require("http");
-
-// Importamos la función 'getCharById' desde el archivo './controllers/getCharById'.
-const getCharById = require("./controllers/getCharById");
-
-// Definimos el número de puerto en el que escuchará el servidor.
+const express = require('express');
+const server = express();
+const router = require("./routes/index")
 const PORT = 3001;
 
-// Creamos un servidor HTTP utilizando el módulo 'http'.
-http
-  .createServer((req, res) => {
-    // Configuramos los encabezados de respuesta para permitir el acceso desde cualquier origen.
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Le da acceso a todos los orígenes (cualquier dominio).
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  res.header(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, DELETE'
+  );
+  next();
+});
 
-    // Verificamos si la URL de la solicitud incluye "/rickandmorty/character".
-    if (req.url.includes("/rickandmorty/character")) {
-      // Extraemos el ID del personaje de la URL.
-      let id = req.url.split("/").pop();
+server.use(express.json())
+server.use("/rickandmorty", router)
 
-      // Llamamos a la función 'getCharById' para obtener y enviar los detalles del personaje.
-      getCharById(id, res);
-    }
-  })
-  .listen(PORT, "127.0.0.1", () => {
-    console.log(`Server listening on port ${PORT}`);
-  });
+
+server.listen(PORT, () => {
+  console.log('Server raised in port: ' + PORT);
+});
